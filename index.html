@@ -23,7 +23,7 @@
 			rel="stylesheet"
 		/>
 		<!-- My links -->
-		<script src="scripts/main.js"></script>
+		<script defer src="scripts/main.js"></script>
 		<link rel="stylesheet" href="css/style.css" />
 		<title>ToDo</title>
 	</head>
@@ -35,10 +35,13 @@
 		<!-- View All Available lists/Add new lists -->
 		<div class="all-lists">
 			<h2 class="all-lists-title">My Lists</h2>
-			<ul class="lists">
-				<li class="active list">Test List</li>
-				<li>Test List 2</li>
-				<li>Test List 3</li>
+			<ul class="lists" data-lists>
+				<!-- <li class="list-name active-list">
+					<span>Test List</span>
+					<l class="fas fa-trash fa-sm"></l>
+				</li>
+				<li class="list-name">Test List 2</li>
+				<li>Test List 3</li> -->
 			</ul>
 			<!-- create form to submit for new list -->
 			<form action="">
@@ -69,74 +72,25 @@
 						container</label
 					>
 				</div>
-				<div class="todo-item">
-					<input type="checkbox" name="item" id="item" />
-					<label for="item"
-						>This is a todo item And I really want to stretch out how long it is
-						so that I can see how it looks when I get to the end of the
-						container</label
-					>
-				</div>
-				<div class="todo-item">
-					<input type="checkbox" name="item" id="item" />
-					<label for="item"
-						>This is a todo item And I really want to stretch out how long it is
-						so that I can see how it looks when I get to the end of the
-						container</label
-					>
-				</div>
-				<div class="todo-item">
-					<input type="checkbox" name="item" id="item" />
-					<label for="item"
-						>This is a todo item And I really want to stretch out how long it is
-						so that I can see how it looks when I get to the end of the
-						container</label
-					>
-				</div>
-				<div class="todo-item">
-					<input type="checkbox" name="item" id="item" />
-					<label for="item"
-						>This is a todo item And I really want to stretch out how long it is
-						so that I can see how it looks when I get to the end of the
-						container</label
-					>
-				</div>
-				<div class="todo-item">
-					<input type="checkbox" name="item" id="item" />
-					<label for="item"
-						>This is a todo item And I really want to stretch out how long it is
-						so that I can see how it looks when I get to the end of the
-						container</label
-					>
-				</div>
-				<div class="todo-item">
-					<input type="checkbox" name="item" id="item" />
-					<label for="item"
-						>This is a todo item And I really want to stretch out how long it is
-						so that I can see how it looks when I get to the end of the
-						container</label
-					>
-				</div>
-				<div class="todo-item">
-					<input type="checkbox" name="item" id="item" />
-					<label for="item"
-						>This is a todo item And I really want to stretch out how long it is
-						so that I can see how it looks when I get to the end of the
-						container</label
-					>
-				</div>
-				<div class="todo-item">
-					<input type="checkbox" name="item" id="item" />
-					<label for="item"
-						>This is a todo item And I really want to stretch out how long it is
-						so that I can see how it looks when I get to the end of the
-						container</label
-					>
+				<div id="addTodo">
+					<input
+						type="text"
+						name="new-list"
+						class="new list"
+						id="newListInput"
+						placeholder="New List Name"
+						aria-label="new list input"
+					/>
+					<button class="btn list" aria-label="create new list button">
+						+
+					</button>
 				</div>
 			</div>
 			<div class="delete-options">
-				<p id="removeCompleted" class="remove">Remove Completed Items</p>
-				<p id="removeList" class="delete">Delete Whole List</p>
+				<button id="removeCompleted" class="remove">
+					Remove Completed Items
+				</button>
+				<button id="removeList" class="delete">Delete Whole List</button>
 			</div>
 		</div>
 	</body>

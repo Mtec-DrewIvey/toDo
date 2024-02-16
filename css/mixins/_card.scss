@@ -2,7 +2,6 @@
 
 // Cards containing lists and todos
 @mixin card($height: 100%, $width: 100%) {
-	align-self: start;
 	border-radius: 15px;
 	box-shadow: 0 15px 20px rgba(0, 0, 0, 0.8);
 	padding: 2em;

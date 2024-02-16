@@ -31,8 +31,7 @@ html {
 
 body {
 	min-height: 100vh;
-	overflow: hidden;
-	background-color: #f2fdff;
+	background-color: #f9feff;
 	display: grid;
 	row-gap: 2em;
 	place-items: center;
@@ -65,22 +64,44 @@ Template Styles
 .all-lists {
 	overflow-y: auto;
 	grid-area: list-items;
+	margin-left: 1em;
 	@include card;
 
-	h2 {
-		font-size: 2.5em;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-		margin-bottom: 0.45em;
-	}
-
 	.lists {
-		list-style: none;
+		list-style: circle;
 		font-size: 1.2em;
 		line-height: 2em;
+
+		.list-name {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.fa-trash {
+				opacity: 40%;
+				cursor: pointer;
+				transition: opacity 150ms ease-in;
+
+				&:hover {
+					opacity: 95%;
+					color: variables.$color-danger;
+				}
+			}
+		}
 	}
 
 	.new::placeholder {
 		opacity: 40%;
+	}
+
+	form {
+		display: flex;
+
+		input {
+			order: 2;
+			min-width: 40%;
+			max-width: 80%;
+		}
 	}
 }
 
@@ -98,12 +119,22 @@ Template Styles
 	font-family: variables.$ff-todo;
 	font-size: variables.$fs-todos;
 	flex-direction: column;
-	align-items: center;
 	height: 80%;
 	overflow-y: auto;
 	border: 1px dashed rgba(0, 0, 0, 0.2);
 	padding: 1em;
 	margin-bottom: 0.85em;
+}
+
+#addTodo {
+	display: flex;
+	gap: 0.85em;
+
+	input {
+		order: 2;
+		width: 40%;
+		background-color: transparent;
+	}
 }
 
 .delete-options {
@@ -112,6 +143,12 @@ Template Styles
 	justify-content: space-between;
 	font-size: variables.$fs-delete-options;
 	padding-top: 0.85em;
+
+	button {
+		border: 0;
+		background-color: transparent;
+		transition: color 100ms ease-in;
+	}
 
 	.remove:hover {
 		@include delete-options;
