@@ -1,9 +1,14 @@
 /*
+Grab partials
+*/
+@use "variables";
+@import "mixins/all.scss";
+
+/*
 ==============
 Global Styles
 ==============
 */
-
 *,
 *::before,
 *::after {
@@ -26,17 +31,18 @@ html {
 
 body {
 	min-height: 100vh;
+	overflow: hidden;
 	background-color: #f2fdff;
 	display: grid;
 	row-gap: 2em;
 	place-items: center;
 	grid-template-columns:
 		minmax(150px, 300px) minmax(25px, 50px) minmax(400px, 1fr)
-		100px;
-	grid-template-rows: minmax(0, 50px) 1fr 1fr minmax(0, 200px);
+		200px;
+	grid-template-rows: minmax(0, 50px) 300px 300px minmax(0, 100px);
 
 	grid-template-areas:
-		". header header ."
+		"clock header header ."
 		"list-items . main ."
 		"list-items . main ."
 		". . . .";
@@ -53,16 +59,13 @@ Template Styles
 
 .company-logo {
 	grid-area: header;
+	padding-top: 1em;
 }
 
 .all-lists {
+	overflow-y: auto;
 	grid-area: list-items;
-	align-self: start;
-	border-radius: 15px;
-	box-shadow: 0 15px 20px rgba(0, 0, 0, 0.8);
-	padding: 2em;
-	width: 100%;
-	height: 100%;
+	@include card;
 
 	h2 {
 		font-size: 2.5em;
@@ -73,23 +76,48 @@ Template Styles
 	.lists {
 		list-style: none;
 		font-size: 1.2em;
+		line-height: 2em;
+	}
 
-		li {
-			margin-bottom: 0.2em;
-		}
+	.new::placeholder {
+		opacity: 40%;
 	}
 }
 
 .todo-list {
 	grid-area: main;
-	align-self: start;
-	height: 100%;
-	width: 100%;
-	box-shadow: 0 15px 20px rgba(0, 0, 0, 0.8);
-	border-radius: 15px;
-	padding: 2em;
+	@include card;
 
 	h2 {
 		text-align: center;
+	}
+}
+
+.todo-items {
+	display: flex;
+	font-family: variables.$ff-todo;
+	font-size: variables.$fs-todos;
+	flex-direction: column;
+	align-items: center;
+	height: 80%;
+	overflow-y: auto;
+	border: 1px dashed rgba(0, 0, 0, 0.2);
+	padding: 1em;
+	margin-bottom: 0.85em;
+}
+
+.delete-options {
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: space-between;
+	font-size: variables.$fs-delete-options;
+	padding-top: 0.85em;
+
+	.remove:hover {
+		@include delete-options;
+	}
+
+	.delete:hover {
+		@include delete-options($theme: variables.$color-danger);
 	}
 }

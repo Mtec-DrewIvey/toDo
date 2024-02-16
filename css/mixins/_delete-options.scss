@@ -1,0 +1,7 @@
+@use "../variables";
+
+@mixin delete-options($theme: variables.$color-success) {
+	color: $theme;
+	border-bottom: 1px solid $theme;
+	cursor: pointer;
+}

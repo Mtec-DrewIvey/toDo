@@ -1,4 +1,7 @@
 /*
+Grab partials
+*/
+/*
 ==============
 Global Styles
 ==============
@@ -25,13 +28,14 @@ html {
 
 body {
   min-height: 100vh;
+  overflow: hidden;
   background-color: #f2fdff;
   display: grid;
   row-gap: 2em;
   place-items: center;
-  grid-template-columns: minmax(150px, 300px) minmax(25px, 50px) minmax(400px, 1fr) 100px;
-  grid-template-rows: minmax(0, 50px) 1fr 1fr minmax(0, 200px);
-  grid-template-areas: ". header header ." "list-items . main ." "list-items . main ." ". . . .";
+  grid-template-columns: minmax(150px, 300px) minmax(25px, 50px) minmax(400px, 1fr) 200px;
+  grid-template-rows: minmax(0, 50px) 300px 300px minmax(0, 100px);
+  grid-template-areas: "clock header header ." "list-items . main ." "list-items . main ." ". . . .";
 }
 
 /*
@@ -44,9 +48,11 @@ Template Styles
 */
 .company-logo {
   grid-area: header;
+  padding-top: 1em;
 }
 
 .all-lists {
+  overflow-y: auto;
   grid-area: list-items;
   align-self: start;
   border-radius: 15px;
@@ -60,23 +66,68 @@ Template Styles
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 0.45em;
 }
+.all-lists h2 {
+  font-size: 2.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.45em;
+}
 .all-lists .lists {
   list-style: none;
   font-size: 1.2em;
+  line-height: 2em;
 }
-.all-lists .lists li {
-  margin-bottom: 0.2em;
+.all-lists .new::-moz-placeholder {
+  opacity: 40%;
+}
+.all-lists .new::placeholder {
+  opacity: 40%;
 }
 
 .todo-list {
   grid-area: main;
   align-self: start;
-  height: 100%;
-  width: 100%;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.8);
   border-radius: 15px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.8);
   padding: 2em;
+  width: 100%;
+  height: 100%;
+}
+.todo-list h2 {
+  font-size: 2.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.45em;
 }
 .todo-list h2 {
   text-align: center;
+}
+
+.todo-items {
+  display: flex;
+  font-family: "Bad Script", sans-serif;
+  font-size: 1.25em;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+  overflow-y: auto;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  padding: 1em;
+  margin-bottom: 0.85em;
+}
+
+.delete-options {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  padding-top: 0.85em;
+}
+.delete-options .remove:hover {
+  color: #22bb33;
+  border-bottom: 1px solid #22bb33;
+  cursor: pointer;
+}
+.delete-options .delete:hover {
+  color: #bb2124;
+  border-bottom: 1px solid #bb2124;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
