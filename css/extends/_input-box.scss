@@ -1,0 +1,10 @@
+%input-box {
+	display: flex;
+	gap: 0.85em;
+
+	input {
+		order: 2;
+		min-width: 60%;
+		background-color: transparent;
+	}
+}

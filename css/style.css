@@ -1,6 +1,17 @@
 /*
 Grab partials
 */
+.user-inputs {
+  display: flex;
+  gap: 0.85em;
+}
+
+.user-inputs input {
+  order: 2;
+  min-width: 60%;
+  background-color: transparent;
+}
+
 /*
 ==============
 Global Styles
@@ -90,14 +101,6 @@ Template Styles
 .all-lists .new::placeholder {
   opacity: 40%;
 }
-.all-lists form {
-  display: flex;
-}
-.all-lists form input {
-  order: 2;
-  min-width: 40%;
-  max-width: 80%;
-}
 
 .todo-list {
   grid-area: main;
@@ -126,16 +129,6 @@ Template Styles
   border: 1px dashed rgba(0, 0, 0, 0.2);
   padding: 1em;
   margin-bottom: 0.85em;
-}
-
-#addTodo {
-  display: flex;
-  gap: 0.85em;
-}
-#addTodo input {
-  order: 2;
-  width: 40%;
-  background-color: transparent;
 }
 
 .delete-options {

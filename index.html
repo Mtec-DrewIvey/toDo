@@ -35,16 +35,9 @@
 		<!-- View All Available lists/Add new lists -->
 		<div class="all-lists">
 			<h2 class="all-lists-title">My Lists</h2>
-			<ul class="lists" data-lists>
-				<!-- <li class="list-name active-list">
-					<span>Test List</span>
-					<l class="fas fa-trash fa-sm"></l>
-				</li>
-				<li class="list-name">Test List 2</li>
-				<li>Test List 3</li> -->
-			</ul>
+			<ul class="lists" data-lists></ul>
 			<!-- create form to submit for new list -->
-			<form action="">
+			<div id="newList" class="user-inputs">
 				<input
 					type="text"
 					name="new-list"
@@ -53,8 +46,14 @@
 					placeholder="New List Name"
 					aria-label="new list input"
 				/>
-				<button class="btn list" aria-label="create new list button">+</button>
-			</form>
+				<button
+					id="newListButton"
+					class="btn list"
+					aria-label="create new list button"
+				>
+					+
+				</button>
+			</div>
 		</div>
 
 		<div class="todo-list">
@@ -72,12 +71,12 @@
 						container</label
 					>
 				</div>
-				<div id="addTodo">
+				<div id="addTodo" class="user-inputs">
 					<input
 						type="text"
 						name="new-list"
 						class="new list"
-						id="newListInput"
+						id="newToDoInput"
 						placeholder="New List Name"
 						aria-label="new list input"
 					/>

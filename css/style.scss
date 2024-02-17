@@ -3,6 +3,7 @@ Grab partials
 */
 @use "variables";
 @import "mixins/all.scss";
+@import "extends/all.scss";
 
 /*
 ==============
@@ -93,16 +94,6 @@ Template Styles
 	.new::placeholder {
 		opacity: 40%;
 	}
-
-	form {
-		display: flex;
-
-		input {
-			order: 2;
-			min-width: 40%;
-			max-width: 80%;
-		}
-	}
 }
 
 .todo-list {
@@ -126,15 +117,8 @@ Template Styles
 	margin-bottom: 0.85em;
 }
 
-#addTodo {
-	display: flex;
-	gap: 0.85em;
-
-	input {
-		order: 2;
-		width: 40%;
-		background-color: transparent;
-	}
+.user-inputs {
+	@extend %input-box;
 }
 
 .delete-options {

@@ -2,27 +2,26 @@
 
 Let's go through different parts of the javascript and document what it is doing. This will make it easier for me to go back and see what I've done as well as help anyone else follow the logic.
 
+---
+
 /---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/
 
 ```
 const listsContainer = document.querySelector("[data-lists]");
+const listInput = document.querySelector("#newListInput");
+const newListBtn = document.querySelector("#newListButton");
 
-let lists = [
-	{
-		id: 1,
-		name: "name",
-	},
-	{
-		id: 2,
-		name: "todo",
-	},
-];
+const LOCAL_STORAGE_LIST_KEY = "task.lists";
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 ```
 
 - Grab the ul element from the DOM so we can append children li elements in a later function.
-- Create an array of objects containing an id and name for each list item. This is how we will keep track of each unique list and be able to add classes and remove them from the DOM as well
+- initialize storage list key called task.lists. This is the key for the local storage. a unique namespace will help it not be overridden.
+- Lists will look at local storage for saved key/values and get those items. If it doesn't exist, we will initalize an empty array.
 
 /---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/
+
+---
 
 /---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/
 
@@ -51,7 +50,7 @@ function render() {
 
 - Render Function:
   - First, call the clearElement function on the existing elements in the listsContainer
-  - Next, we need to loop through each object in the list array and do a few things
+  - Next, we need to loop through each object in the list array and do a few things:
     - create 3 elements:
       1. <li></li> to hold each list item
       2. <span></span> to contain the 'text' of the list item
@@ -62,6 +61,8 @@ function render() {
     - Lastly, using the list array we are going to grab the name value and show that to the user using .innerText
 
 /---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/
+
+---
 
 /---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/
 
@@ -77,5 +78,26 @@ function clearElement(element) {
 - clearElement function:
   - Takes an element as param and clears any children currently in said element. This is used to make sure I am only displaying new lists that we store in our list array.
   - This is called within our render() function to make sure we remove existing elems before pushing lists to user.
+
+/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/
+
+---
+
+/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/
+
+```
+function saveToLocal() {
+localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
+}
+
+// Create function to save and render to save time calling both functions later
+function saveAndRender() {
+saveToLocal();
+renderList();
+}
+```
+
+- saveToLocal function simply stores the objects we pushed to the list array using the click eventlistener.
+- saveAndRender function calls saveToLocal() and renderList() functions. This should save us time calling both in the future.
 
 /---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/---/

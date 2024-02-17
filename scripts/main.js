@@ -28,21 +28,53 @@ Minify and compress your CSS and JavaScript files.
 */
 
 const listsContainer = document.querySelector("[data-lists]");
+const listInput = document.querySelector("#newListInput");
+const newListBtn = document.querySelector("#newListButton");
 
-let lists = [
-	{
-		id: 1,
-		name: "name",
-	},
-	{
-		id: 2,
-		name: "todo",
-	},
-];
+const LOCAL_STORAGE_LIST_KEY = "task.lists";
+// Initialize array from local storageto store list objects. If no objects - start empty list.
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
+
+// Function to save items to local storage
+function saveToLocal() {
+	localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
+}
+
+// Create function to save and render to save time calling both functions later
+function saveAndRender() {
+	saveToLocal();
+	renderList();
+}
+
+//Add Event Listener to button for new List
+newListBtn.addEventListener("click", function () {
+	let newlistInput = listInput.value;
+	if (newlistInput == null || newlistInput === "") {
+		return;
+	}
+	const list = createList(newlistInput);
+
+	listInput.value = null; // return input to null once finished
+	lists.push(list);
+
+	saveAndRender();
+});
+
+/*
+Create list with param of list name we typed in
+Return object with random id & name
+*/
+function createList(name) {
+	return {
+		id: Date.now().toString(),
+		name: name,
+		tasks: [],
+	};
+}
 
 // Render Task List from array
-function render() {
-	clearElement(listsContainer);
+function renderList() {
+	clearElement(listsContainer); // Clear
 
 	lists.forEach((list) => {
 		const listElement = document.createElement("li");
@@ -68,4 +100,4 @@ function clearElement(element) {
 	}
 }
 
-render();
+renderList();
