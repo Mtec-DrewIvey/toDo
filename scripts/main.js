@@ -32,12 +32,22 @@ const listInput = document.querySelector("#newListInput");
 const newListBtn = document.querySelector("#newListButton");
 
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
+const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
 // Initialize array from local storageto store list objects. If no objects - start empty list.
-let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) ?? [];
+let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
+
+listsContainer.addEventListener("click", (e) => {
+	if (e.target.tagName.toLowerCase() === "li") {
+		selectedListId = e.target.dataset.listId;
+		saveAndRender();
+	}
+});
 
 // Function to save items to local storage
 function saveToLocal() {
 	localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
+	localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
 }
 
 // Create function to save and render to save time calling both functions later
@@ -63,6 +73,7 @@ newListBtn.addEventListener("click", function () {
 /*
 Create list with param of list name we typed in
 Return object with random id & name
+tasks is an empty array to be used for todo tasks for each list.
 */
 function createList(name) {
 	return {
@@ -74,22 +85,25 @@ function createList(name) {
 
 // Render Task List from array
 function renderList() {
-	clearElement(listsContainer); // Clear
+	clearElement(listsContainer);
 
 	lists.forEach((list) => {
 		const listElement = document.createElement("li");
 		const listSpan = document.createElement("span");
 		const listTrashEl = document.createElement("i");
 
-		listElement.dataset.listID = list.id; // Set data attr on list so we can identify which list is active.
+		listElement.dataset.listId = list.id; // Set data attr on list so we can identify which list is active.
 		listElement.classList.add("list-name");
 		listTrashEl.classList.add("fas", "fa-trash", "fa-sm");
 
-		listsContainer.appendChild(listElement);
+		listSpan.innerText = list.name;
+		listSpan.innerText = list.name;
+		if (list.id === selectedListId) {
+			listSpan.classList.add("active-list");
+		}
 		listElement.appendChild(listSpan);
 		listElement.appendChild(listTrashEl);
-
-		listSpan.innerText = list.name;
+		listsContainer.appendChild(listElement);
 	});
 }
 

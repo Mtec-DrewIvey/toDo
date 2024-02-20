@@ -77,6 +77,18 @@ Template Styles
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			cursor: pointer;
+			opacity: 50%;
+
+			.active-list {
+				opacity: 100%;
+				color: variables.$color-success;
+			}
+
+			&:hover {
+				opacity: 75%;
+				scale: 1.05;
+			}
 
 			.fa-trash {
 				opacity: 40%;

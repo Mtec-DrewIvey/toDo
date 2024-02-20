@@ -85,6 +85,16 @@ Template Styles
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+  opacity: 50%;
+}
+.all-lists .lists .list-name .active-list {
+  opacity: 100%;
+  color: #22bb33;
+}
+.all-lists .lists .list-name:hover {
+  opacity: 75%;
+  scale: 1.05;
 }
 .all-lists .lists .list-name .fa-trash {
   opacity: 40%;
