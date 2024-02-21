@@ -80,25 +80,25 @@ Template Styles
 			cursor: pointer;
 			opacity: 50%;
 
-			.active-list {
+			&.active-list {
 				opacity: 100%;
 				color: variables.$color-success;
 			}
 
 			&:hover {
-				opacity: 75%;
+				opacity: 90%;
 				scale: 1.05;
 			}
+		}
+		i.fa-trash {
+			opacity: 40%;
+			cursor: pointer;
+			transition: opacity 150ms ease-in;
+			color: rgba(0, 0, 0, 0.5);
 
-			.fa-trash {
-				opacity: 40%;
-				cursor: pointer;
-				transition: opacity 150ms ease-in;
-
-				&:hover {
-					opacity: 95%;
-					color: variables.$color-danger;
-				}
+			&:hover {
+				opacity: 95%;
+				color: variables.$color-danger;
 			}
 		}
 	}

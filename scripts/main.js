@@ -30,6 +30,7 @@ Minify and compress your CSS and JavaScript files.
 const listsContainer = document.querySelector("[data-lists]");
 const listInput = document.querySelector("#newListInput");
 const newListBtn = document.querySelector("#newListButton");
+const deleteListBtn = document.querySelector("[data-delete-list-button]");
 
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
@@ -42,6 +43,15 @@ listsContainer.addEventListener("click", (e) => {
 		selectedListId = e.target.dataset.listId;
 		saveAndRender();
 	}
+});
+
+deleteListBtn.addEventListener("click", (e) => {
+	// Create new lists --> as long as list.id does not equal the list we have currently selected --> put list item in new list.
+	lists = lists.filter((list) => list.id !== selectedListId);
+	selectedListId = null;
+
+	// Re-render entire page - this will make sure
+	saveAndRender();
 });
 
 // Function to save items to local storage
@@ -89,20 +99,15 @@ function renderList() {
 
 	lists.forEach((list) => {
 		const listElement = document.createElement("li");
-		const listSpan = document.createElement("span");
-		const listTrashEl = document.createElement("i");
 
 		listElement.dataset.listId = list.id; // Set data attr on list so we can identify which list is active.
 		listElement.classList.add("list-name");
-		listTrashEl.classList.add("fas", "fa-trash", "fa-sm");
 
-		listSpan.innerText = list.name;
-		listSpan.innerText = list.name;
+		listElement.innerText = list.name;
+		listElement.innerText = list.name;
 		if (list.id === selectedListId) {
-			listSpan.classList.add("active-list");
+			listElement.classList.add("active-list");
 		}
-		listElement.appendChild(listSpan);
-		listElement.appendChild(listTrashEl);
 		listsContainer.appendChild(listElement);
 	});
 }

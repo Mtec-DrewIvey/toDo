@@ -88,20 +88,21 @@ Template Styles
   cursor: pointer;
   opacity: 50%;
 }
-.all-lists .lists .list-name .active-list {
+.all-lists .lists .list-name.active-list {
   opacity: 100%;
   color: #22bb33;
 }
 .all-lists .lists .list-name:hover {
-  opacity: 75%;
+  opacity: 90%;
   scale: 1.05;
 }
-.all-lists .lists .list-name .fa-trash {
+.all-lists .lists i.fa-trash {
   opacity: 40%;
   cursor: pointer;
   transition: opacity 150ms ease-in;
+  color: rgba(0, 0, 0, 0.5);
 }
-.all-lists .lists .list-name .fa-trash:hover {
+.all-lists .lists i.fa-trash:hover {
   opacity: 95%;
   color: #bb2124;
 }
