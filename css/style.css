@@ -13,7 +13,6 @@ Grab partials
   padding-left: 0.5em;
   border: 0;
   border-bottom: 1px solid #548993;
-  transition: scale 2ms ease;
 }
 
 /*
@@ -78,7 +77,7 @@ Template Styles
 .all-lists h2 {
   font-size: 2.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 0.45em;
+  margin-bottom: 0.5em;
 }
 .all-lists .lists {
   list-style: circle;
@@ -120,7 +119,7 @@ Template Styles
 .todo-list h2 {
   font-size: 2.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 0.45em;
+  margin-bottom: 0.5em;
 }
 .todo-list h2 {
   text-align: center;
@@ -141,13 +140,12 @@ Template Styles
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.85rem;
   padding-top: 0.85em;
 }
 .delete-options button {
-  border: 0;
+  border: none;
   background-color: transparent;
-  transition: color 1s ease-in;
+  font-size: 0.75rem;
 }
 .delete-options .remove:hover {
   color: #22bb33;
@@ -161,11 +159,10 @@ Template Styles
 }
 
 .btn {
-  width: 2em;
-  height: 2em;
-  padding: 0.25em;
-  border-radius: 50%;
-  border: 1px solid #dadfea;
+  color: #548993;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 .btn:hover {
@@ -180,6 +177,14 @@ Template Styles
   padding: 0.25em;
   margin-bottom: 0.5em;
   gap: 1em;
+}
+.todo-item input:hover {
+  scale: 110%;
+}
+.todo-item input:checked,
+.todo-item [type=checkbox]:checked + label {
+  opacity: 20%;
+  text-decoration: line-through;
 }
 .todo-item [data-delete-task] {
   border: none;

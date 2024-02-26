@@ -4,13 +4,13 @@
 @mixin card($height: 100%, $width: 100%) {
 	border-radius: 15px;
 	box-shadow: 0 15px 20px rgba(0, 0, 0, 0.8);
-	padding: 2em;
+	padding: variables.$space-xl;
 	width: $width;
 	height: $height;
 
 	h2 {
 		font-size: variables.$fs-xl;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-		margin-bottom: 0.45em;
+		border-bottom: 1px solid variables.$color-border;
+		margin-bottom: variables.$space-xs;
 	}
 }

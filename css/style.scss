@@ -115,7 +115,7 @@ Template Styles
 	flex-direction: column;
 	padding: variables.$space-md;
 	margin-bottom: variables.$space-sm;
-	border: 1px dashed rgba(0, 0, 0, 0.2);
+	border: 1px dashed variables.$color-border;
 }
 
 .user-inputs {
@@ -123,18 +123,16 @@ Template Styles
 }
 
 .delete-options {
-	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	border-top: 1px solid variables.$color-border;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: variables.$fs-xs;
 	padding-top: variables.$space-sm;
 
 	button {
-		// flex: 1;
-		border: 0;
+		border: none;
 		background-color: transparent;
-		transition: color 1s ease-in;
+		font-size: variables.$fs-xs;
 	}
 
 	.remove:hover {
@@ -147,11 +145,10 @@ Template Styles
 }
 
 .btn {
-	width: variables.$space-xl;
-	height: variables.$space-xl;
-	padding: 0.25em;
-	border-radius: 50%;
-	border: 1px solid #dadfea;
+	color: variables.$color-accent;
+	border: none;
+	background: transparent;
+	font-size: variables.$fs-lg;
 	cursor: pointer;
 
 	&:hover {
@@ -167,6 +164,16 @@ Template Styles
 	padding: variables.$space-xxs;
 	margin-bottom: variables.$space-xs;
 	gap: variables.$space-md;
+
+	input:hover {
+		scale: 110%;
+	}
+
+	input:checked,
+	[type="checkbox"]:checked + label {
+		opacity: 20%;
+		text-decoration: line-through;
+	}
 
 	[data-delete-task] {
 		border: none;

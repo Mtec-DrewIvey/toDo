@@ -35,21 +35,21 @@
 		</div>
 		<!-- View All Available lists/Add new lists -->
 		<div class="all-lists">
-			<h2 class="all-lists-title">My Lists</h2>
+			<h2>My Lists</h2>
 			<ul class="lists" data-lists></ul>
 			<!-- create form to submit for new list -->
 			<div id="newList" class="user-inputs">
 				<input
 					type="text"
 					name="new-list"
-					class="new list"
+					class="new"
 					id="newListInput"
 					placeholder="New List Name"
 					aria-label="new list input"
 				/>
 				<button
 					id="newListButton"
-					class="btn list"
+					class="btn"
 					aria-label="create new list button"
 				>
 					+
@@ -58,27 +58,19 @@
 		</div>
 
 		<div class="todo-list" data-list-container>
-			<div class="todo-header">
-				<div class="list-title">
-					<h2 data-list-title></h2>
-				</div>
-			</div>
+			<h2 data-list-title></h2>
 			<div class="todo-container">
-				<div class="todo-items" data-todo-items></div>
+				<div data-todo-items></div>
 				<div id="addTodo" class="user-inputs">
 					<input
 						type="text"
 						name="new-list"
-						class="new list"
+						class="new"
 						data-new-task-input
 						placeholder="New ToDo"
 						aria-label="new todo input"
 					/>
-					<button
-						class="btn list"
-						id="newToDo"
-						aria-label="create new list button"
-					>
+					<button class="btn" id="newToDo" aria-label="create new list button">
 						+
 					</button>
 				</div>
@@ -99,7 +91,7 @@
 					<input type="checkbox" />
 					<label></label>
 				</div>
-				<div class="delete-btn">
+				<div>
 					<button data-delete-task>Delete</button>
 				</div>
 			</div>

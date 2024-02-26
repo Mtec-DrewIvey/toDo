@@ -2,15 +2,14 @@
 
 %input-box {
 	display: flex;
-	gap: 0.85em;
+	gap: variables.$space-sm;
 
 	input {
 		order: 2;
 		min-width: 60%;
 		background-color: transparent;
-		padding-left: 0.5em;
+		padding-left: variables.$space-xs;
 		border: 0;
 		border-bottom: 1px solid variables.$color-accent;
-		transition: scale 2ms ease;
 	}
 }
