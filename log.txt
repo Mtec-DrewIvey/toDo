@@ -1,3 +1,15 @@
+commit 1401ac1ba3cd74077e23ee47988cddc7a1e96fd3
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Sun Feb 25 22:40:33 2024 -0700
+
+    updated main.js to be more readable
+
+commit 1c91ff629f2d0efb5e4bcd85f932281064964d46
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Sun Feb 25 22:26:34 2024 -0700
+
+    adding git log
+
 commit c3651feb26deed43d5e4d167804d18833a72438c
 Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
 Date:   Sun Feb 25 22:25:46 2024 -0700
