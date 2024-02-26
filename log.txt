@@ -1,0 +1,53 @@
+commit c3651feb26deed43d5e4d167804d18833a72438c
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Sun Feb 25 22:25:46 2024 -0700
+
+    Updated html to remove unused containers and classes. Updated stylesheets to add and use correct variables
+
+commit b4f96ea9e991ddf05c674fe0aa28a3a3de3f3b7c
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Sun Feb 25 21:10:55 2024 -0700
+
+    long gap between commits... Finished JavaScript implementation. started cleaning up styling as it was mostly comlete but needs touching up.
+
+commit 63374d20baea017efc757ee10cb287b9dfcca7e0
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Wed Feb 21 12:19:36 2024 -0700
+
+    removed trash icon from lists as it was redundant, have another option to delete list already. Added javascript functionality to delete list using 'Delete Whole List' button Wed Feb 21 12:19:36 MST 2024
+
+commit a49d07c2e9bae9aea74cea78358e81a3bd685ef7
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Tue Feb 20 14:06:12 2024 -0700
+
+    added active class to selected list. Added javascript to detect click on child element of List <ul> to know which list to highglight
+
+commit 7bfcf6b597ad78239c570276ed48cce5576dde00
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Fri Feb 16 21:38:41 2024 -0700
+
+    adding extend for input box for reusability. slight adjustments to css. Added Local Storage to save list items we push. This ensures that user on same device will have access to all lists added previously and shouldn't be deleted. Fri Feb 16 21:38:41 MST 2024
+
+commit e566ec02f1dfe8b774c02391703df68ac5690e81
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Fri Feb 16 12:33:47 2024 -0700
+
+    making minor style changes. Mostly focusing on JS this push. Starting with creating new lists. Created render function to grab lists from within an array where we will store user input and send to local storage. Also, created docs.md file to track/document js for reference
+
+commit 415ff46aa800165a9da8f5a113f4fdc1bd74fe2b
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Thu Feb 15 21:18:36 2024 -0700
+
+    added partial files with variables and mixins. Created 'all' mixin file for ease of import to main stylesheet. finished general styling of html
+
+commit ceabd50b543f4822b5eff38216eab152e6b84677
+Author: Drew Ivey <drew.ivey4543@stu.mtec.edu>
+Date:   Wed Feb 14 09:39:01 2024 -0700
+
+    Decided agains using framework and use SCSS/CSS for styling. Set up html structure with placeholder content that will be dynamic later with JS. Added basic Grid structure -Wed Feb 14 09:39:01 MST 2024
+
+commit 31c2ea7d8ec64dc07135f44d5d64b4d653e2d581
+Author: Drew Ivey <155995115+Mtec-DrewIvey@users.noreply.github.com>
+Date:   Fri Feb 9 10:05:41 2024 -0700
+
+    Initial commit
