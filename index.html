@@ -22,6 +22,7 @@
 			href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap"
 			rel="stylesheet"
 		/>
+
 		<!-- My links -->
 		<script defer src="scripts/main.js"></script>
 		<link rel="stylesheet" href="css/style.css" />
@@ -56,43 +57,52 @@
 			</div>
 		</div>
 
-		<div class="todo-list">
+		<div class="todo-list" data-list-container>
 			<div class="todo-header">
 				<div class="list-title">
-					<h2>Test List</h2>
+					<h2 data-list-title></h2>
 				</div>
 			</div>
-			<div class="todo-items">
-				<div class="todo-item">
-					<input type="checkbox" name="item" id="item" />
-					<label for="item"
-						>This is a todo item And I really want to stretch out how long it is
-						so that I can see how it looks when I get to the end of the
-						container</label
-					>
-				</div>
+			<div class="todo-container">
+				<div class="todo-items" data-todo-items></div>
 				<div id="addTodo" class="user-inputs">
 					<input
 						type="text"
 						name="new-list"
 						class="new list"
-						id="newToDoInput"
+						data-new-task-input
 						placeholder="New ToDo"
 						aria-label="new todo input"
 					/>
-					<button class="btn list" aria-label="create new list button">
+					<button
+						class="btn list"
+						id="newToDo"
+						aria-label="create new list button"
+					>
 						+
 					</button>
 				</div>
 			</div>
 			<div class="delete-options">
-				<button id="removeCompleted" class="remove">
+				<button id="removeComplete" class="remove">
 					Remove Completed Items
 				</button>
-				<button id="removeList" class="delete" data-delete-list-button>
+				<button class="delete" data-delete-list-button>
 					Delete Whole List
 				</button>
 			</div>
 		</div>
+
+		<template id="taskTemplate">
+			<div class="todo-item">
+				<div class="inputs">
+					<input type="checkbox" />
+					<label></label>
+				</div>
+				<div class="delete-btn">
+					<button data-delete-task>Delete</button>
+				</div>
+			</div>
+		</template>
 	</body>
 </html>

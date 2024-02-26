@@ -10,6 +10,10 @@ Grab partials
   order: 2;
   min-width: 60%;
   background-color: transparent;
+  padding-left: 0.5em;
+  border: 0;
+  border-bottom: 1px solid #548993;
+  transition: scale 2ms ease;
 }
 
 /*
@@ -78,7 +82,7 @@ Template Styles
 }
 .all-lists .lists {
   list-style: circle;
-  font-size: 1.2em;
+  font-size: 1.25rem;
   line-height: 2em;
 }
 .all-lists .lists .list-name {
@@ -96,16 +100,6 @@ Template Styles
   opacity: 90%;
   scale: 1.05;
 }
-.all-lists .lists i.fa-trash {
-  opacity: 40%;
-  cursor: pointer;
-  transition: opacity 150ms ease-in;
-  color: rgba(0, 0, 0, 0.5);
-}
-.all-lists .lists i.fa-trash:hover {
-  opacity: 95%;
-  color: #bb2124;
-}
 .all-lists .new::-moz-placeholder {
   opacity: 40%;
 }
@@ -114,12 +108,14 @@ Template Styles
 }
 
 .todo-list {
+  position: relative;
   grid-area: main;
   border-radius: 15px;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.8);
   padding: 2em;
   width: 100%;
   height: 100%;
+  overflow: auto;
 }
 .todo-list h2 {
   font-size: 2.5rem;
@@ -130,29 +126,28 @@ Template Styles
   text-align: center;
 }
 
-.todo-items {
+.todo-container {
   display: flex;
   font-family: "Bad Script", sans-serif;
-  font-size: 1.25rem;
+  font-size: fs-sm;
   flex-direction: column;
-  height: 80%;
-  overflow-y: auto;
-  border: 1px dashed rgba(0, 0, 0, 0.2);
   padding: 1em;
   margin-bottom: 0.85em;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
 }
 
 .delete-options {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 0.85rem;
   padding-top: 0.85em;
 }
 .delete-options button {
   border: 0;
   background-color: transparent;
-  transition: color 100ms ease-in;
+  transition: color 1s ease-in;
 }
 .delete-options .remove:hover {
   color: #22bb33;
@@ -163,4 +158,36 @@ Template Styles
   color: #bb2124;
   border-bottom: 1px solid #bb2124;
   cursor: pointer;
+}
+
+.btn {
+  width: 2em;
+  height: 2em;
+  padding: 0.25em;
+  border-radius: 50%;
+  border: 1px solid #dadfea;
+  cursor: pointer;
+}
+.btn:hover {
+  scale: 115%;
+}
+
+.todo-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 0.25em;
+  margin-bottom: 0.5em;
+  gap: 1em;
+}
+.todo-item [data-delete-task] {
+  border: none;
+  padding-right: 0.25em;
+  background-color: transparent;
+  cursor: pointer;
+}
+.todo-item [data-delete-task]:hover {
+  scale: 110%;
+  color: #bb2124;
 }/*# sourceMappingURL=style.css.map */

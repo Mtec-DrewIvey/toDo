@@ -32,9 +32,9 @@ html {
 
 body {
 	min-height: 100vh;
-	background-color: #f9feff;
+	background-color: variables.$color-bg;
 	display: grid;
-	row-gap: 2em;
+	row-gap: variables.$space-xl;
 	place-items: center;
 	grid-template-columns:
 		minmax(150px, 300px) minmax(25px, 50px) minmax(400px, 1fr)
@@ -59,19 +59,19 @@ Template Styles
 
 .company-logo {
 	grid-area: header;
-	padding-top: 1em;
+	padding-top: variables.$space-md;
 }
 
 .all-lists {
 	overflow-y: auto;
 	grid-area: list-items;
-	margin-left: 1em;
+	margin-left: variables.$space-md;
 	@include card;
 
 	.lists {
 		list-style: circle;
-		font-size: 1.2em;
-		line-height: 2em;
+		font-size: variables.$fs-md;
+		line-height: variables.$space-xl;
 
 		.list-name {
 			display: flex;
@@ -90,17 +90,6 @@ Template Styles
 				scale: 1.05;
 			}
 		}
-		i.fa-trash {
-			opacity: 40%;
-			cursor: pointer;
-			transition: opacity 150ms ease-in;
-			color: rgba(0, 0, 0, 0.5);
-
-			&:hover {
-				opacity: 95%;
-				color: variables.$color-danger;
-			}
-		}
 	}
 
 	.new::placeholder {
@@ -109,24 +98,24 @@ Template Styles
 }
 
 .todo-list {
+	position: relative;
 	grid-area: main;
 	@include card;
+	overflow: auto;
 
 	h2 {
 		text-align: center;
 	}
 }
 
-.todo-items {
+.todo-container {
 	display: flex;
 	font-family: variables.$ff-todo;
-	font-size: variables.$fs-todos;
+	font-size: fs-sm;
 	flex-direction: column;
-	height: 80%;
-	overflow-y: auto;
+	padding: variables.$space-md;
+	margin-bottom: variables.$space-sm;
 	border: 1px dashed rgba(0, 0, 0, 0.2);
-	padding: 1em;
-	margin-bottom: 0.85em;
 }
 
 .user-inputs {
@@ -137,13 +126,15 @@ Template Styles
 	border-top: 1px solid rgba(0, 0, 0, 0.2);
 	display: flex;
 	justify-content: space-between;
-	font-size: variables.$fs-delete-options;
-	padding-top: 0.85em;
+	align-items: center;
+	font-size: variables.$fs-xs;
+	padding-top: variables.$space-sm;
 
 	button {
+		// flex: 1;
 		border: 0;
 		background-color: transparent;
-		transition: color 100ms ease-in;
+		transition: color 1s ease-in;
 	}
 
 	.remove:hover {
@@ -152,5 +143,40 @@ Template Styles
 
 	.delete:hover {
 		@include delete-options($theme: variables.$color-danger);
+	}
+}
+
+.btn {
+	width: variables.$space-xl;
+	height: variables.$space-xl;
+	padding: 0.25em;
+	border-radius: 50%;
+	border: 1px solid #dadfea;
+	cursor: pointer;
+
+	&:hover {
+		scale: 115%;
+	}
+}
+
+.todo-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: variables.$color-input;
+	padding: variables.$space-xxs;
+	margin-bottom: variables.$space-xs;
+	gap: variables.$space-md;
+
+	[data-delete-task] {
+		border: none;
+		padding-right: variables.$space-xxs;
+		background-color: transparent;
+		cursor: pointer;
+
+		&:hover {
+			scale: 110%;
+			color: variables.$color-danger;
+		}
 	}
 }

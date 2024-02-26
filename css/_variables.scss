@@ -3,11 +3,23 @@ $ff-main: "Alegreya", sans-serif;
 $ff-todo: "Bad Script", sans-serif;
 
 // Font Sizes
-$fs-header: 2.5rem;
-$fs-lists: 1.5rem;
-$fs-todos: 1.25rem;
-$fs-delete-options: 0.85rem;
+$fs-xl: 2.5rem;
+$fs-lg: 1.5rem;
+$fs-md: 1.25rem;
+$fs-sm: 1rem;
+$fs-xs: 0.85rem;
 
 // Colors
 $color-danger: #bb2124;
 $color-success: #22bb33;
+$color-bg: #f9feff;
+$color-input: #f0f0f0;
+$color-accent: #548993;
+
+// General em units
+$space-xl: 2em;
+$space-lg: 1.2em;
+$space-md: 1em;
+$space-sm: 0.85em;
+$space-xs: 0.5em;
+$space-xxs: 0.25em;

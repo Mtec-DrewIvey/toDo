@@ -1,42 +1,20 @@
-/* 
-
-Multiple Lists:
-
-Allow users to create and manage multiple to-do lists.
-Implement a user-friendly way to switch or view various lists, such as tabs or a dropdown menu.
-Task Management:
-
-Enable users to add, edit, and delete tasks within each list.
-Implement drag-and-drop functionality for task reordering.
-Provide a way to mark tasks as completed and clear completed tasks.
-LocalStorage or Database Integration:
-
-Store the to-do lists and tasks persistently using LocalStorage or integrate a backend database if possible.
-This ensures data is not lost when the user refreshes the page or closes the browser.
-User Authentication (Optional):
-
-If you want to add an extra layer of functionality, consider implementing user authentication to allow multiple users to have their own sets of to-do lists.
-Error Handling:
-
-Implement error handling to gracefully handle situations like network errors, incorrect user inputs, or unexpected issues.
-
-Performance Optimization:
-
-Optimize your code and assets to improve loading times.
-Use lazy loading for images and scripts.
-Minify and compress your CSS and JavaScript files.
-*/
-
 const listsContainer = document.querySelector("[data-lists]");
 const listInput = document.querySelector("#newListInput");
 const newListBtn = document.querySelector("#newListButton");
 const deleteListBtn = document.querySelector("[data-delete-list-button]");
+const toDoContainer = document.querySelector("[data-list-container]");
+const listTitle = document.querySelector("[data-list-title]");
+const todoItem = document.querySelector("[data-todo-items]");
+const taskTemplate = document.getElementById("taskTemplate");
+const ToDoInput = document.querySelector("[data-new-task-input]");
 
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
 // Initialize array from local storageto store list objects. If no objects - start empty list.
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) ?? [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
+// console.log(selectedListId);
+lists.forEach((list) => (list.tasks = list.tasks || []));
 
 listsContainer.addEventListener("click", (e) => {
 	if (e.target.tagName.toLowerCase() === "li") {
@@ -63,12 +41,12 @@ function saveToLocal() {
 // Create function to save and render to save time calling both functions later
 function saveAndRender() {
 	saveToLocal();
-	renderList();
+	renderToDo();
 }
 
 //Add Event Listener to button for new List
 newListBtn.addEventListener("click", function () {
-	let newlistInput = listInput.value;
+	const newlistInput = listInput.value;
 	if (newlistInput == null || newlistInput === "") {
 		return;
 	}
@@ -80,6 +58,12 @@ newListBtn.addEventListener("click", function () {
 	saveAndRender();
 });
 
+const removeCompleted = document.getElementById("removeComplete");
+removeCompleted.addEventListener("click", function () {
+	selectedList = lists.find((list) => list.id === selectedListId);
+	selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
+	saveAndRender();
+});
 /*
 Create list with param of list name we typed in
 Return object with random id & name
@@ -93,6 +77,67 @@ function createList(name) {
 	};
 }
 
+function createToDo(name) {
+	return {
+		id: Date.now().toString(),
+		name: name,
+		complete: false,
+	};
+}
+
+function renderToDo() {
+	renderList();
+
+	selectedList = lists.find((list) => list.id === selectedListId);
+	if (selectedList == null) {
+		toDoContainer.style.display = "none";
+	} else {
+		toDoContainer.style.display = ""; // default is display: block;
+		const addToDoBtn = document.querySelector("#newToDo");
+		listTitle.innerText = selectedList.name;
+		clearElement(todoItem);
+		renderTasks(selectedList);
+		addToDoBtn.addEventListener("click", function () {
+			const toDoName = ToDoInput.value;
+			if (toDoName == null || toDoName === "") {
+				return;
+			}
+			const task = createToDo(toDoName);
+
+			ToDoInput.value = null; // return input to null once finished
+			selectedList.tasks.push(task);
+			saveAndRender();
+		});
+	}
+}
+
+function renderTasks(selectedList) {
+	// const addToDoBtn = document.querySelector("#newToDo");
+	selectedList.tasks.forEach((task) => {
+		const taskElement = document.importNode(taskTemplate.content, true);
+		const checkbox = taskElement.querySelector("input");
+		const deleteTask = taskElement.querySelector("button");
+		checkbox.id = task.id;
+		checkbox.checked = task.complete;
+		const label = taskElement.querySelector("label");
+		label.htmlFor = task.id;
+		label.append(task.name);
+		todoItem.appendChild(taskElement);
+
+		checkbox.addEventListener("click", function () {
+			task.complete = checkbox.checked;
+			saveAndRender();
+		});
+
+		deleteTask.addEventListener("click", function () {
+			selectedList.tasks = selectedList.tasks.filter(
+				(todo) => todo.id !== task.id
+			);
+			saveAndRender();
+		});
+	});
+}
+
 // Render Task List from array
 function renderList() {
 	clearElement(listsContainer);
@@ -103,7 +148,6 @@ function renderList() {
 		listElement.dataset.listId = list.id; // Set data attr on list so we can identify which list is active.
 		listElement.classList.add("list-name");
 
-		listElement.innerText = list.name;
 		listElement.innerText = list.name;
 		if (list.id === selectedListId) {
 			listElement.classList.add("active-list");
@@ -119,4 +163,4 @@ function clearElement(element) {
 	}
 }
 
-renderList();
+saveAndRender();
