@@ -10,10 +10,11 @@ const ToDoInput = document.querySelector("[data-new-task-input]");
 
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "task.selectedListId";
+
 // Initialize array from local storageto store list objects. If no objects - start empty list.
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) ?? [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
-// console.log(selectedListId);
+
 lists.forEach((list) => (list.tasks = list.tasks || []));
 
 listsContainer.addEventListener("click", (e) => {
@@ -64,6 +65,7 @@ removeCompleted.addEventListener("click", function () {
 	selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
 	saveAndRender();
 });
+
 /*
 Create list with param of list name we typed in
 Return object with random id & name
@@ -117,11 +119,13 @@ function renderTasks(selectedList) {
 		const taskElement = document.importNode(taskTemplate.content, true);
 		const checkbox = taskElement.querySelector("input");
 		const deleteTask = taskElement.querySelector("button");
+		const label = taskElement.querySelector("label");
+
 		checkbox.id = task.id;
 		checkbox.checked = task.complete;
-		const label = taskElement.querySelector("label");
 		label.htmlFor = task.id;
 		label.append(task.name);
+
 		todoItem.appendChild(taskElement);
 
 		checkbox.addEventListener("click", function () {
@@ -129,6 +133,7 @@ function renderTasks(selectedList) {
 			saveAndRender();
 		});
 
+		// Delete Task
 		deleteTask.addEventListener("click", function () {
 			selectedList.tasks = selectedList.tasks.filter(
 				(todo) => todo.id !== task.id
